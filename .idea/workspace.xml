@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4df4791e-d7ff-4d6e-aba4-2d5f11f4bc38" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Exercicios/Cap_1/ex02.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Exercicios/Cap_1/ex03.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercicios/Cap_1/badpoetries2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exercicios/Cap_1/sortedlist.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exercicios/Cap_1/ex01.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exercicios/Cap_1/ex01.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercicios/Cap_1/ex01.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exercicios/Cap_1/bigdigits.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercicios/Cap_1/ex02.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exercicios/Cap_1/avarage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercicios/Cap_1/ex03.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exercicios/Cap_1/poetry.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +39,8 @@
       <recent name="$PROJECT_DIR$/Exercicios" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.ex03">
-    <configuration name="ex01" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.sortedlist">
+    <configuration name="avarage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Programacao_em_Pyhton3" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -50,7 +52,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Exercicios/Cap_1/ex01.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Exercicios/Cap_1/avarage.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -59,7 +61,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ex02" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="bigdigits" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Programacao_em_Pyhton3" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -71,7 +73,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Exercicios/Cap_1/ex02.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Exercicios/Cap_1/bigdigits.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -80,7 +82,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ex03" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="poetry" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Programacao_em_Pyhton3" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -92,7 +94,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Exercicios/Cap_1/ex03.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Exercicios/Cap_1/poetry.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="sortedlist" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Programacao_em_Pyhton3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Exercicios/Cap_1" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Exercicios/Cap_1/sortedlist.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -103,9 +126,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ex03" />
-        <item itemvalue="Python.ex02" />
-        <item itemvalue="Python.ex01" />
+        <item itemvalue="Python.sortedlist" />
+        <item itemvalue="Python.poetry" />
+        <item itemvalue="Python.avarage" />
+        <item itemvalue="Python.bigdigits" />
       </list>
     </recent_temporary>
   </component>
@@ -130,22 +154,22 @@
       <screen x="39" y="27" width="1327" height="741" />
     </state>
     <state x="300" y="27" width="794" height="741" key="CommitChangelistDialog2/39.27.1327.741@39.27.1327.741" timestamp="1592249071353" />
-    <state width="1306" height="298" key="GridCell.Tab.0.bottom" timestamp="1592314015657">
+    <state width="1306" height="298" key="GridCell.Tab.0.bottom" timestamp="1592325854120">
       <screen x="39" y="27" width="1327" height="741" />
     </state>
-    <state width="1306" height="298" key="GridCell.Tab.0.bottom/39.27.1327.741@39.27.1327.741" timestamp="1592314015657" />
-    <state width="1306" height="298" key="GridCell.Tab.0.center" timestamp="1592314015651">
+    <state width="1306" height="298" key="GridCell.Tab.0.bottom/39.27.1327.741@39.27.1327.741" timestamp="1592325854120" />
+    <state width="1306" height="298" key="GridCell.Tab.0.center" timestamp="1592325854116">
       <screen x="39" y="27" width="1327" height="741" />
     </state>
-    <state width="1306" height="298" key="GridCell.Tab.0.center/39.27.1327.741@39.27.1327.741" timestamp="1592314015651" />
-    <state width="1306" height="298" key="GridCell.Tab.0.left" timestamp="1592314015650">
+    <state width="1306" height="298" key="GridCell.Tab.0.center/39.27.1327.741@39.27.1327.741" timestamp="1592325854116" />
+    <state width="1306" height="298" key="GridCell.Tab.0.left" timestamp="1592325854115">
       <screen x="39" y="27" width="1327" height="741" />
     </state>
-    <state width="1306" height="298" key="GridCell.Tab.0.left/39.27.1327.741@39.27.1327.741" timestamp="1592314015650" />
-    <state width="1306" height="298" key="GridCell.Tab.0.right" timestamp="1592314015656">
+    <state width="1306" height="298" key="GridCell.Tab.0.left/39.27.1327.741@39.27.1327.741" timestamp="1592325854115" />
+    <state width="1306" height="298" key="GridCell.Tab.0.right" timestamp="1592325854118">
       <screen x="39" y="27" width="1327" height="741" />
     </state>
-    <state width="1306" height="298" key="GridCell.Tab.0.right/39.27.1327.741@39.27.1327.741" timestamp="1592314015656" />
+    <state width="1306" height="298" key="GridCell.Tab.0.right/39.27.1327.741@39.27.1327.741" timestamp="1592325854118" />
     <state x="501" y="313" width="393" height="166" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591654349909">
       <screen x="39" y="27" width="1327" height="741" />
     </state>
