@@ -5,13 +5,12 @@ Zero = ['  ***  ',
         ' *   * ',
         '  ***  '
         ]
-One = ['    *  ',
-        '  **  ',
-        '   *   ',
-        '   *   ',
-        '   *   ',
-        '  ***  '
-        ]
+One = ['   *  ',
+       '  **  ',
+       '   *  ',
+       '   *  ',
+       '   *  ',
+       '  *** ']
 
 Two = ['  ***   ',
         '*    * ',
@@ -80,9 +79,13 @@ Nine = ['  ****',
 numlist = [Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine]
 
 
-n = int(input('Digite os números de 0 à 9: '))
-for _, i in enumerate(numlist):
-    print('', end='')
-    for l in i:
-        print(l.replace('*', f'{n}'))
+def bigdigits(num):
+    global numlist
+    for c in num:
+        for i in numlist[int(c)]:
+            print(i.replace('*', f'{int(c)}'))
+
+
+n = str(input('Digite os números de 0 à 9: ')).strip()
+bigdigits(n)
 
