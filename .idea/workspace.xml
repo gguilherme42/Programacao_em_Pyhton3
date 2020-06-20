@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4df4791e-d7ff-4d6e-aba4-2d5f11f4bc38" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Exercicios/Cap_1/badpoetries2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Exercicios/Cap_1/sortedlist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exercicios/Cap_1/ex01.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exercicios/Cap_1/bigdigits.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exercicios/Cap_1/ex02.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exercicios/Cap_1/avarage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exercicios/Cap_1/ex03.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exercicios/Cap_1/poetry.py" afterDir="false" />
-    </list>
+    <list default="true" id="4df4791e-d7ff-4d6e-aba4-2d5f11f4bc38" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
