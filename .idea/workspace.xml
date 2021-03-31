@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4df4791e-d7ff-4d6e-aba4-2d5f11f4bc38" name="Default Changelist" comment="" />
+    <list default="true" id="4df4791e-d7ff-4d6e-aba4-2d5f11f4bc38" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Programacao_em_Pyhton3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Programacao_em_Pyhton3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercicios/shared/interestingFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exercicios/shared/interestingFunctions.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +31,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Exercicios" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -126,6 +134,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -139,33 +148,18 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="LAST_COMMIT_MESSAGE" value="" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="300" y="27" width="794" height="741" key="CommitChangelistDialog2" timestamp="1592249071353">
-      <screen x="39" y="27" width="1327" height="741" />
-    </state>
-    <state x="300" y="27" width="794" height="741" key="CommitChangelistDialog2/39.27.1327.741@39.27.1327.741" timestamp="1592249071353" />
-    <state width="1306" height="298" key="GridCell.Tab.0.bottom" timestamp="1592325854120">
-      <screen x="39" y="27" width="1327" height="741" />
-    </state>
-    <state width="1306" height="298" key="GridCell.Tab.0.bottom/39.27.1327.741@39.27.1327.741" timestamp="1592325854120" />
-    <state width="1306" height="298" key="GridCell.Tab.0.center" timestamp="1592325854116">
-      <screen x="39" y="27" width="1327" height="741" />
-    </state>
-    <state width="1306" height="298" key="GridCell.Tab.0.center/39.27.1327.741@39.27.1327.741" timestamp="1592325854116" />
-    <state width="1306" height="298" key="GridCell.Tab.0.left" timestamp="1592325854115">
-      <screen x="39" y="27" width="1327" height="741" />
-    </state>
-    <state width="1306" height="298" key="GridCell.Tab.0.left/39.27.1327.741@39.27.1327.741" timestamp="1592325854115" />
-    <state width="1306" height="298" key="GridCell.Tab.0.right" timestamp="1592325854118">
-      <screen x="39" y="27" width="1327" height="741" />
-    </state>
-    <state width="1306" height="298" key="GridCell.Tab.0.right/39.27.1327.741@39.27.1327.741" timestamp="1592325854118" />
-    <state x="501" y="313" width="393" height="166" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591654349909">
-      <screen x="39" y="27" width="1327" height="741" />
-    </state>
-    <state x="501" y="313" width="393" height="166" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/39.27.1327.741@39.27.1327.741" timestamp="1591654349909" />
   </component>
 </project>
