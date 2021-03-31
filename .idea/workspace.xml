@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4df4791e-d7ff-4d6e-aba4-2d5f11f4bc38" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Programacao_em_Pyhton3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Programacao_em_Pyhton3.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Exercicios/shared/interestingFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exercicios/shared/interestingFunctions.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
