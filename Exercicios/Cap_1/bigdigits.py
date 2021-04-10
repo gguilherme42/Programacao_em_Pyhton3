@@ -2,6 +2,7 @@ Zero = ['  ***  ',
         ' *   * ',
         '*     *',
         '*     *',
+        '*     *',
         ' *   * ',
         '  ***  '
         ]
@@ -10,24 +11,24 @@ One = ['   *  ',
        '   *  ',
        '   *  ',
        '   *  ',
+       '   *  ',
        '  *** ']
-
-Two = ['  ***   ',
-        '*    * ',
-        '*   *  ',
-        '   *   ',
-        '  *    ',
-        '  *****'
+Two = ['  ***  ',
+       '*     *',
+       '*    * ',
+       '   *   ',
+       '  *    ',
+       '*      ',
+       '*******'
         ]
-
-Three = ['**** ',
-        '     *',
-        '     *',
-        '  ****',
-        '     *',
-        '     *',
-        '***** ']
-
+Three = ['  ***  ',
+         ' *    *',
+         '      *',
+         '   *** ',
+         '      *',
+         ' *    *',
+         '  ***  '
+         ]
 Four = ['   *  ',
         '  **  ',
         ' * *  ',
@@ -35,15 +36,13 @@ Four = ['   *  ',
         '******',
         '   *  ',
         '   *  ']
-
-Five = ['******',
+Five = ['*******',
         '*     ',
         '*     ',
-        '******',
-        '     *',
-        '     *',
-        '******']
-
+        '****** ',
+        '      *',
+        '      *',
+        '****** ']
 Six = [' ***  ',
        '*     ',
        '*     ',
@@ -51,41 +50,44 @@ Six = [' ***  ',
        '*    *',
        '*    *',
        ' ***  ']
-
-Seven = [' *****',
-         '     *',
-         '    * ',
+Seven = ['  *****',
+         '      *',
+         '     * ',
          '   *   ',
-         ' *    ',
-         '*     ',
-         '*     ']
-
-Eight = ['  *** ',
+         '  *    ',
+         '*      ',
+         '*      ']
+Eight = ['  ***  ',
          '*     *',
          '*     *',
          '  ***  ',
          '*     *',
          '*     *',
          '  ***  ']
+Nine = ['   ****',
+        ' *    *',
+        ' *    *',
+        '   ****',
+        '      *',
+        '      *',
+        '      *']
 
-Nine = ['  ****',
-        '*    *',
-        '*    *',
-        '  ****',
-        '     *',
-        '     *',
-        '     *']
-
-numlist = [Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine]
-
-
-def bigdigits(num):
-    global numlist
-    for c in num:
-        for i in numlist[int(c)]:
-            print(i.replace('*', f'{int(c)}'))
+digitlist = [Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine]
 
 
-n = str(input('Digite os números de 0 à 9: ')).strip()
-bigdigits(n)
+inputDigits = str(input('Digite os números de 0 à 9: ')).strip()
+
+# um digito é composto por 7 linhas (rows)
+for row in range(7):
+    line = ""
+    for column in range(len(inputDigits)):
+       #  pega o n número da string, que é o input
+       number = int(inputDigits[column])
+        # pega o digito da lista de digitos de acordo com o número do input
+       digit = digitlist[number]
+       # pega uma parte do digito e substitui a string de '*' pelo número atual do input
+       line += digit[row].replace('*', f'{number}') + "     "
+    print(line)
+
+
 
