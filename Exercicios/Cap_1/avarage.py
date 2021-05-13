@@ -14,3 +14,4 @@ Highest: {max(n)}
 Lowest: {min(n)}
 Mean: {sum(n)/len(n)}
 ''')
+

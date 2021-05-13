@@ -3,8 +3,8 @@ def poetrygenerate(l=5):
     import random
 
     artigos = ['o', 'a', 'um', 'uns', 'umas', 'uma']
-    sujeitos = ['gato', 'cão', 'homem', 'mulher', 'bode', 'coelho']
-    verbos = ['amar', 'caminhar', 'trocar', 'morrer', 'cair', 'andar']
+    sujeitos = ['gato', 'cão', 'homem', 'mulher', 'bode', 'coelho', 'ele', 'ela', 'eles', 'elas']
+    verbos = ['amar', 'caminhar', 'trocar', 'morrer', 'cair', 'andar', 'ir']
     adverbios = ['silenciosamente', 'bem', 'mal', 'vagarosamente', 'temerariamente', 'pesarosamente']
 
     for _ in range(l):
@@ -14,5 +14,5 @@ def poetrygenerate(l=5):
          print(f'{adverbios[random.randint(0, 5)]}')
 
 
-n = int(input('Digite a quantidade de linhas entre 1 e 10: '))
+n = int(input('Digite a quantidade de linhas da poesia: '))
 poetrygenerate(n)
