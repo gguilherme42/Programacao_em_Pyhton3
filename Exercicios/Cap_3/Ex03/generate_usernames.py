@@ -11,7 +11,7 @@ def validate_start() -> None:
         sys.exit()
 
 
-def generate_username(fields: list, usernames: set) -> str:
+def generate_username(fields: list[str], usernames: set) -> str:
     new_username = ((fields[FORENAME][0] + fields[MIDDLENAME][:1] + fields[SURNAME]).replace("-", "").replace("'", ""))
     new_username = original_username = new_username.lower()[:8] # limit of an username is 8
     count = 1
@@ -40,7 +40,7 @@ def printable_divider(name_width: int, username_width: int) -> str:
     return f"{'':-<{name_width}} {'':-<6} {'':-<{username_width}}"
 
 
-def fix_len_columns(column1_list: list, column2_list: list) -> None:
+def fix_len_columns(column1_list: list[str], column2_list: list[str]) -> None:
     # It needs to be fixed because we need pairs to zip()
     if len(column1_list) > len(column2_list):
         column2_list.append("")
@@ -48,7 +48,7 @@ def fix_len_columns(column1_list: list, column2_list: list) -> None:
         column1_list.append("")
 
 
-def two_users_per_line(column1_list: list, column2_list: list, users: dict, name_width: int, username_width: int) -> None:
+def two_users_per_line(column1_list: list[str], column2_list: list[str], users: dict, name_width: int, username_width: int) -> None:
     count = 0
     for key in sorted(users):
         user = users[key]
