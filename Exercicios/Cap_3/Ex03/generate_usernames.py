@@ -41,6 +41,7 @@ def printable_divider(name_width: int, username_width: int) -> str:
 
 
 def fix_len_columns(column1_list: list, column2_list: list) -> None:
+    # It needs to be fixed because we need pairs to zip()
     if len(column1_list) > len(column2_list):
         column2_list.append("")
     elif len(column1_list) < len(column2_list):
