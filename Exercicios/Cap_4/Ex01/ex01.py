@@ -2,7 +2,7 @@ import os
 import sys
 
 
-def return_lst_files() -> list[str]:
+def return_lst_files_from_current_directory() -> list[str]:
     existing_files = os.listdir('.')
    
 
@@ -30,7 +30,7 @@ def open_file(file_name: str) -> None:
 
 def main(): 
     # file = input('Choose file name: ').strip()
-    print(return_lst_files())
+    print(return_lst_files_from_current_directory())
 
 
 main()
