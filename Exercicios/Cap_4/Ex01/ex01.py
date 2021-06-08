@@ -16,7 +16,7 @@ def return_lst_files_from_current_directory() -> list[str]:
 
 def print_files(files: list[str]) -> None:
     for file_number, file_name in enumerate(files, start=1):
-        print(f'{file_number} - {file_name}')
+        print(f'{file_number:3} - {file_name}')
 
 user_options_dict = {'a': lambda : 'teste', 'd': lambda: 'DELETE', 's': lambda: "SAVE", 'q': sys.exit}
 
@@ -48,9 +48,10 @@ def open_file(file_name: str) -> None:
 
 
 def create_lst_files_list() -> None:
-    for number in range(0, 10):
-        new_file = open(f'file{number}.lst', 'w', encoding='utf8')
-        new_file.close()
+    if not(return_lst_files_from_current_directory()):
+        for number in range(0, 10):
+            new_file = open(f'file{number}.lst', 'w', encoding='utf8')
+            new_file.close()
 
 
 
