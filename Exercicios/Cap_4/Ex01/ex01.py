@@ -58,10 +58,14 @@ def create_lst_files_list() -> None:
 def main(): 
     create_lst_files_list()
     while True:
-        files = return_lst_files_from_current_directory()
-        if files:
-            print_files(files)
-        # file = input('Choose file name: ').strip()
+        current_directory_files = return_lst_files_from_current_directory()
+        if current_directory_files:
+            print_files(current_directory_files)
+        else:
+            print('-- No items are in the list --')
+            file = input('Choose file name: ').strip()
+        file += '.lst' if not(file.endswith('.lst')) else ''
+
         option = user_option()
         user_options_dict[option]()
 
