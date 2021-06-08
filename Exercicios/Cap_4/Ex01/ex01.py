@@ -3,14 +3,20 @@ import sys
 
 
 
+
+
 def return_lst_files_from_current_directory() -> list[str]:
     existing_files = os.listdir('.')
    
 
-    filtered_files = filter(lambda file: file.endswith('.lst'), existing_files)
+    filtered_files = filter(lambda file:  file.endswith('.lst'), existing_files)
 
     return [*filtered_files]
 
+
+def print_files(files: list[str]) -> None:
+    for file_number, file_name in enumerate(files, start=1):
+        print(f'{file_number} - {file_name}')
 
 user_options_dict = {'a': lambda : 'teste', 'd': lambda: 'DELETE', 's': lambda: "SAVE", 'q': sys.exit}
 
@@ -41,16 +47,22 @@ def open_file(file_name: str) -> None:
     
 
 
-
+def create_lst_files_list() -> None:
+    for number in range(0, 10):
+        new_file = open(f'file{number}.lst', 'w', encoding='utf8')
+        new_file.close()
 
 
 
 def main(): 
+    create_lst_files_list()
     while True:
+        files = return_lst_files_from_current_directory()
+        if files:
+            print_files(files)
         # file = input('Choose file name: ').strip()
         option = user_option()
         user_options_dict[option]()
-        print(return_lst_files_from_current_directory())
 
 
 main()
