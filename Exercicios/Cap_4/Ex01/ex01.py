@@ -2,6 +2,7 @@ import os
 import sys
 
 
+
 def return_lst_files_from_current_directory() -> list[str]:
     existing_files = os.listdir('.')
    
@@ -11,9 +12,24 @@ def return_lst_files_from_current_directory() -> list[str]:
     return [*filtered_files]
 
 
+user_options_dict = {'a': lambda : 'teste', 'd': lambda: 'DELETE', 's': lambda: "SAVE", 'q': sys.exit}
+
+
 def user_option() -> str:
-    option = input('[A]dd [D]elete [S]ave [Q]uit [a]: ').lower().strip()[0]
-    return option
+    while True:
+        try:
+            option = input('[A]dd [D]elete [S]ave [Q]uit [a]: ').lower().strip()[0]
+        
+        except IndexError as err:
+            print('ERROR: invalid choice--enter one of "AaDdSsQq"')
+        
+        except KeyboardInterrupt:
+            user_options_dict['q']()
+        else:
+            if option in 'adsq':
+                return option
+            print('ERROR: invalid choice--enter one of "AaDdSsQq"')
+            
 
 
 def open_file(file_name: str) -> None:
@@ -28,9 +44,13 @@ def open_file(file_name: str) -> None:
 
 
 
+
 def main(): 
-    # file = input('Choose file name: ').strip()
-    print(return_lst_files_from_current_directory())
+    while True:
+        # file = input('Choose file name: ').strip()
+        option = user_option()
+        user_options_dict[option]()
+        print(return_lst_files_from_current_directory())
 
 
 main()
