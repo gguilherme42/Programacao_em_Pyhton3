@@ -64,7 +64,7 @@ def main():
         else:
             print('-- No items are in the list --')
             file = input('Choose file name: ').strip()
-        file += '.lst' if not(file.endswith('.lst')) else ''
+            file += '.lst' if not(file.endswith('.lst')) else ''
 
         option = user_option()
         user_options_dict[option]()
