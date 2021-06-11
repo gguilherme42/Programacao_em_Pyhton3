@@ -49,13 +49,16 @@ def open_file(file_name: str) -> None:
 
 def read_file(file_name: str) -> list[str]:
     try:
-        opened_file = open(file_name, 'r', encoding='utf8')
+    
+        opened_file = open(file_name, 'r')
     
     except EnvironmentError as err:
+        print(err)
         return []
        
     else:
-        file_lines = [line  for line in opened_file.read()]
+        
+        file_lines = [line  for line in opened_file]
         opened_file.close()
         return file_lines
 
@@ -104,10 +107,10 @@ def valid_number_to_choose(msg: str, limit: int, stop_program_with_zero: bool) -
 
 # User options 
 
-def user_option() -> str:
+def user_option(has_unsaved_changes: bool) -> str:
     while True:
         try:
-            option = input('[A]dd [D]elete [S]ave [Q]uit [a]: ').lower().strip()[0]
+            option = input(f'[A]dd [D]elete {"[S]ave" if has_unsaved_changes else ""} [Q]uit [a]: ').lower().strip()[0]
         
         except IndexError as err:
             print('ERROR: invalid choice--enter one of "AaDdSsQq"')
@@ -115,7 +118,8 @@ def user_option() -> str:
         except KeyboardInterrupt:
             user_options_dict['q']()
         else:
-            if option in 'adsq':
+            valid_options = 'adsq' if has_unsaved_changes else 'adq'
+            if option in valid_options:
                 return option
             print('ERROR: invalid choice--enter one of "AaDdSsQq"')
 
@@ -167,20 +171,22 @@ user_options_dict = {'a': add_line, 'd': delete_line, 's': lambda: "SAVE", 'q': 
 
 
             
-def initial_config(current_directory_files: list[str], file: str) -> None:
+def initial_config(current_directory_files: list[str]) -> str:
+    file_name = ''
     if current_directory_files:
         print_files(current_directory_files)
 
         file_number = valid_number_to_choose('Choose a file by its number (0 to create a new file): ', len(current_directory_files), True)
 
         if file_number == 0:
-            file = input_file_name('Choose file name: ')
+            file_name = input_file_name('Choose file name: ')
             
         else: 
-            file = find_file_by_number(file_number, current_directory_files)
+            file_name = find_file_by_number(file_number, current_directory_files)
     else:
-        file = input_file_name('Choose file name: ')
+        file_name = input_file_name('Choose file name: ')
 
+    return file_name
 
 
 def main(): 
@@ -188,25 +194,27 @@ def main():
     file = ''
     current_directory_files = return_lst_files_from_current_directory()
     
-    initial_config(current_directory_files, file)
+    file = initial_config(current_directory_files)
   
-    file_lines = read_file(file)
+    print(f'aaaaa: {file}')
+    file_lines_saved = read_file(file)
+    file_lines_unsaved = file_lines_saved[:]
     
-    if not(file_lines):
+    if not(file_lines_unsaved):
         print('\n-- no items are in the list --\n')
-        user_options_dict[user_option_when_file_is_empty()](file_lines)
+        user_options_dict[user_option_when_file_is_empty()](file_lines_unsaved)
     
     while True:
      
-        print_lines(file_lines)
-        option = user_option()
+        print_lines(file_lines_unsaved)
+        option = user_option(file_lines_saved != file_lines_unsaved)
         if option == 'q':
             user_options_dict[option]()
         else:
-            user_options_dict[option](file_lines)
+            user_options_dict[option](file_lines_unsaved)
         
-        if not(file_lines):
-            user_options_dict[user_option_when_file_is_empty()](file_lines)
+        if not(file_lines_unsaved):
+            user_options_dict[user_option_when_file_is_empty()](file_lines_unsaved)
             
 
 
