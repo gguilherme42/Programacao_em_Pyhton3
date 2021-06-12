@@ -48,6 +48,7 @@ def open_file(file_name: str) -> None:
 
 
 def read_file(file_name: str) -> list[str]:
+    file_lines = []
     try:
     
         opened_file = open(file_name, 'r')
@@ -57,8 +58,8 @@ def read_file(file_name: str) -> list[str]:
         return []
        
     else:
-        
-        file_lines = [line  for line in opened_file]
+        for line in opened_file:
+            file_lines.append(line.strip())
         opened_file.close()
         return file_lines
 
@@ -107,18 +108,20 @@ def valid_number_to_choose(msg: str, limit: int, stop_program_with_zero: bool) -
 
 # User options 
 
-def user_option(has_unsaved_changes: bool) -> str:
+def user_option(has_unsaved_changes: bool, line_list_length: int) -> str:
     while True:
         try:
-            option = input(f'[A]dd [D]elete {"[S]ave" if has_unsaved_changes else ""} [Q]uit [a]: ').lower().strip()[0]
+            option = input(f'[A]dd {"[D]elete" if line_list_length > 0 else ""} {"[S]ave" if has_unsaved_changes else ""} [Q]uit [a]: ').lower().strip()[0]
         
         except IndexError as err:
             print('ERROR: invalid choice--enter one of "AaDdSsQq"')
         
         except KeyboardInterrupt:
-            user_options_dict['q']()
+            sys.exit()
         else:
-            valid_options = 'adsq' if has_unsaved_changes else 'adq'
+            valid_options = 'aq'
+            valid_options += 's' if has_unsaved_changes else ''
+            valid_options += 'd' if line_list_length > 0 else ''
             if option in valid_options:
                 return option
             print('ERROR: invalid choice--enter one of "AaDdSsQq"')
@@ -167,7 +170,41 @@ def delete_line(line_list: list[str]) -> None:
         line_list.pop(line_number - 1)
 
 
-user_options_dict = {'a': add_line, 'd': delete_line, 's': lambda: "SAVE", 'q': sys.exit}
+def save(line_list_unsaved: list[str], file_name: str) -> None:
+    try:
+        opened_file = open(file_name, 'w')
+    except EnvironmentError as err:
+        print(f'ERROR: {err}')
+    else:
+        for line in line_list_unsaved:
+            opened_file.write(f'{line}\n')
+        print(f'Saved {len(line_list_unsaved)} items to {file_name}')
+    finally:
+        opened_file.close()    
+
+
+
+def quit(has_unsaved_changes: bool, file_lines_unsaved: list[str], file: str) -> None:
+    if has_unsaved_changes:
+        while True:
+            try:
+                answer = input('Save unsaved changes (y/n) [y]: ').strip().lower()
+
+            except KeyboardInterrupt:
+                sys.exit()    
+            else:
+                if answer == 'y':
+                    save(file_lines_unsaved, file)
+                    sys.exit()
+                elif answer == 'n':
+                    sys.exit()
+                print('ERROR: Invalid answer.')
+    else:
+        sys.exit()    
+
+
+
+user_options_dict = {'a': add_line, 'd': delete_line, 's': save, 'q': quit}
 
 
             
@@ -196,7 +233,6 @@ def main():
     
     file = initial_config(current_directory_files)
   
-    print(f'aaaaa: {file}')
     file_lines_saved = read_file(file)
     file_lines_unsaved = file_lines_saved[:]
     
@@ -207,14 +243,16 @@ def main():
     while True:
      
         print_lines(file_lines_unsaved)
-        option = user_option(file_lines_saved != file_lines_unsaved)
+        option = user_option(file_lines_saved != file_lines_unsaved, len(file_lines_unsaved))
         if option == 'q':
-            user_options_dict[option]()
+            user_options_dict[option](file_lines_saved != file_lines_unsaved, file_lines_unsaved, file)
+        
+        elif option == 's':
+            user_options_dict[option](file_lines_unsaved, file)
+            file_lines_saved = file_lines_unsaved[:]
         else:
             user_options_dict[option](file_lines_unsaved)
         
-        if not(file_lines_unsaved):
-            user_options_dict[user_option_when_file_is_empty()](file_lines_unsaved)
             
 
 
