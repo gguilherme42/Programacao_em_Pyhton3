@@ -1,5 +1,6 @@
 import sys
 
+# The other numbers are empty because I'm lazy
 zero = ["  ***  ",
         " *   * ",
         "*     *",
