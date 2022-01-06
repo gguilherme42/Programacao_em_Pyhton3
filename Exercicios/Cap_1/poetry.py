@@ -9,5 +9,6 @@ for _ in range(5):
      print(f'{artigos[random.randint(0, 5)]}', end=' ')
      print(f'{sujeitos[random.randint(0, 5)]}', end=' ')
      print(f'{verbos[random.randint(0, 5)]}', end=' ')
-     print(f'{adverbios[random.randint(0, 5)]}')
+     if random.randint(0,1) == 1:
+          print(f'{adverbios[random.randint(0, 5)]}')
 
