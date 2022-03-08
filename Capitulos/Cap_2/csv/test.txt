@@ -1,0 +1,91 @@
+<table border='1'>
+<tr bgcolor=lightgreen>
+<td align='rigth'>1</td>
+<td align='rigth'>12</td>
+<td align='rigth'>123</td>
+<tr bgcolor=white>
+<td align='rigth'>3</td>
+<td align='rigth'>34</td>
+<td align='rigth'>341</td>
+<tr bgcolor=lightyellow>
+<td align='rigth'>1</td>
+<tr bgcolor=white>
+<td>A</td>
+</tr
+<td>Aa</td>
+</tr
+<td>Aaa</td>
+</tr
+<td>Aaaa</td>
+</tr
+<tr bgcolor=lightyellow>
+<td>T</td>
+</tr
+<td>Tr</td>
+</tr
+<td>Tre</td>
+</tr
+<td>Treq</td>
+</tr
+<tr bgcolor=white>
+<td>W</td>
+</tr
+<td>We</td>
+</tr
+<tr bgcolor=lightyellow>
+<td>Q</td>
+</tr
+<td>Qw</td>
+</tr
+<td>Qwe</td>
+</tr
+<tr bgcolor=white>
+<td>Q</td>
+</tr
+<td>Qq</td>
+</tr
+<td>Qqw</td>
+</tr
+<tr bgcolor=lightyellow>
+<td>E</td>
+</tr
+<td>Eq</td>
+</tr
+<td>Eqw</td>
+</tr
+<tr bgcolor=white>
+<td>E</td>
+</tr
+<tr bgcolor=lightyellow>
+<td>R</td>
+</tr
+<tr bgcolor=white>
+<td>T</td>
+</tr
+<tr bgcolor=lightyellow>
+<td>Q</td>
+</tr
+<td>Qt</td>
+</tr
+<tr bgcolor=white>
+<td>Q</td>
+</tr
+<td>Qw</td>
+</tr
+<td>Qwe</td>
+</tr
+<tr bgcolor=lightyellow>
+<td>T</td>
+</tr
+<td>Tq</td>
+</tr
+<td>Tqw</td>
+</tr
+<td>Tqwe</td>
+</tr
+<td>Tqwet</td>
+</tr
+<td>Tqwetq</td>
+</tr
+<tr bgcolor=white>
+</table>
