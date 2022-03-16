@@ -16,7 +16,7 @@ def print_unicode_table(word_list_input):
             character = chr(code)
             name = unicodedata.name(character, '*** unknown ***')
 
-            if word is None or word in name.lower():
+            if word in name.lower():
                 print(f'{code:7} {code:5X} {code:^3c} {name.title()}')
                     # decimal inteiro - hexadecimal maiúsculo - caractere
             code += 1
@@ -28,3 +28,5 @@ if len(sys.argv) > 1:
     else:
         word_list = [word.lower() for word in sys.argv[1:]]
         print_unicode_table(word_list)
+else:
+    print(f"Usage: {sys.argv[0]} [string]")

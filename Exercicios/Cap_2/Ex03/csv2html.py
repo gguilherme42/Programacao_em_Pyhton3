@@ -5,9 +5,9 @@ def print_start():
     print('<table border="1" >')
 
 
-def print_line(line, color, max_width):
-    print(f'<tr bgcolor={color}>')
-    fields = extract_fields()
+def print_line(line: str, color: str, max_width: int):
+    print(f'<tr bgcolor="{color}">')
+    fields = extract_fields(line)
 
     for field in fields:
         if not field:
@@ -26,38 +26,36 @@ def print_line(line, color, max_width):
                     print(f'<td>{field}</td>')
                 else:
                     print(f'<td>{field:.{max_width}}...</td>')
-                print('</tr>')
+    print('</tr>')
 
 
-def extract_fields(line):
+def extract_fields(line: str):
     fields = []
     field = ""
     quote = None
+    
     for character in line:
-        if character in "\"'":
+        if character in "\"\'":
             if quote is None: # começo da string com aspas
                 quote = character
             elif quote == character: # fim da string com aspas
                 quote = None
-            else:
-                field += character # outra aspa dentro de uma string com aspas
-            continue
-        if quote is None and character== ",": # fim de um campo
+            
+            continue    
+        
+        if quote is None and character == ",": # fim de um campo
             fields.append(field)
             field = ""
         else:
             field += character # Acumulando um campo
-        if field:
-            fields.append(field) # adicionando o último campo
 
-        return fields
+    return fields
 
 
 def escape_html(text):
-    text = text.replace("&", "&amp;")
-    text = text.replace("<", "&lt;")
-    text = text.replace(">", "&gt;")
-    return text
+    import xml.sax.saxutils
+
+    return xml.sax.saxutils.escape(text)
 
 
 def print_end():
@@ -69,6 +67,7 @@ def main():
     count = 0
     print_start()
     color = "lightyellow"
+    
     while True:
         try:
             line = input()
@@ -78,10 +77,11 @@ def main():
                 color = "white"
             else:
                 color = "lightyellow"
-
-                print_line(line, color, max_width)
-                count += 1
-        except EOFError:
+            
+        
+            print_line(line, color, max_width)
+            count += 1
+        except EOFError as err:
             break
 
     print_end()
