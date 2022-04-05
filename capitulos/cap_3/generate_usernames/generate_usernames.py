@@ -38,14 +38,14 @@ def print_users(users: dict):
         initial = ""
         if user.middlename:
             initial = f" {user.middlename[0]}"
-        name = f"{user.surname}, {user.forename} {user.initial}"
+        name = f"{user.surname}, {user.forename} {initial}"
         print(f"{name:.<{namewidth}} {user.id:4} {user.username:{usernamewidth}}")
 
 
 def main():
     import sys
     
-    if len(sys.argv) == 1 or sys.argv in {"-h", "--help"}:
+    if len(sys.argv) == 1 or sys.argv[1] in {"-h", "--help"}:
         print(f"usage: {sys.argv[0]} file1 [file2 [...fileN]]")
         sys.exit()
 
@@ -60,3 +60,6 @@ def main():
                 users[(user.surname.lower(), user.forename.lower(), user.id)] = user
     
     print_users(users)
+
+
+main()
