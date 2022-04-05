@@ -1,106 +1,98 @@
-import sys
-from collections import namedtuple
+import collections
 
+User = collections.namedtuple("User", "username forename middlename surname id")
 ID, FORENAME, MIDDLENAME, SURNAME, DEPARTMENT = range(5)
-
-User_tuple = namedtuple("User_tuple", "username forename middlename surname id")
-
-def validate_start() -> None:
-    if len(sys.argv) == 1 or sys.argv[1] in {"-h", "--help"}:
-        print(f"Usage: {sys.argv[0]} file1 [fil2 [...fileN]]")
-        sys.exit()
+NAMEWIDTH = 17
+USERNAMEWIDTH = 9
 
 
-def generate_username(fields: list[str], usernames: set) -> str:
+def generate_username(fields: list, usernames: set) -> str:
     new_username = ((fields[FORENAME][0] + fields[MIDDLENAME][:1] + fields[SURNAME]).replace("-", "").replace("'", ""))
-    new_username = original_username = new_username.lower()[:8] # limit of an username is 8
-    count = 1
 
+    new_username = original_name = new_username[:8].lower()
+
+    count = 1
     while new_username in usernames:
-        new_username = f'{original_username}{count}'
+        new_username = f"{original_name}{count}"
         count += 1
     
-    usernames.add(new_username)
     return new_username
 
 
-def process_line(line: str, usernames: set) -> User_tuple:
-    fields = line.split(':')
-    new_username = generate_username(fields, usernames)
-    new_user = User_tuple(new_username, fields[FORENAME], fields[MIDDLENAME], fields[SURNAME], fields[ID])    
-    return new_user
-
-
-
-def printable_header(name_width: int, username_width: int) -> str:
-    return f"{'Name':<{name_width}} {'ID':^6} {'Username':{username_width}}"
+def process_line(line: str, usernames: set) -> User:
+    fields = line.split(":")
+    username = generate_username(fields, usernames)
     
+    usernames.add(username)
 
-def printable_divider(name_width: int, username_width: int) -> str:
-    return f"{'':-<{name_width}} {'':-<6} {'':-<{username_width}}"
-
-
-def fix_len_columns(column1_list: list[str], column2_list: list[str]) -> None:
-    # It needs to be fixed because we need pairs to zip()
-    if len(column1_list) > len(column2_list):
-        column2_list.append("")
-    elif len(column1_list) < len(column2_list):
-        column1_list.append("")
+    user = User(username, fields[FORENAME], fields[MIDDLENAME], fields[SURNAME], fields[ID])
+    return user
 
 
-def two_users_per_line(column1_list: list[str], column2_list: list[str], users: dict, name_width: int, username_width: int) -> None:
-    count = 0
-    for key in sorted(users):
-        user = users[key]
-        initial = ""
-        if user.middlename:
-            initial = " " + user.middlename[0]
-        name = f"{user.surname}, {user.forename} {initial}"
-        name_limit = name_width if len(name) >= name_width else len(name)
-        name = name[:name_limit]
-        
-        printable_result = f"{name:.<{name_width}} ({user.id:4}) {user.username:{username_width}}"
+def create_user_fullname(user: User) -> str:
+    initial = ''
+    if user.middlename:
+        initial = f" {user.middlename[0]}"
+    name = f"{user.surname}, {user.forename} {initial}"
+    return f"{name:.{NAMEWIDTH}}"   
 
-        if count % 2 == 0:
-            column1_list.append(printable_result)
-        else:
-            column2_list.append(printable_result)
-        count += 1
+def print_column_header():
+    column_title = f"{'Name':<{NAMEWIDTH}} {'ID':^6} {'Username':{USERNAMEWIDTH}}"
+    column_title_underline = f"{'':-<{NAMEWIDTH}} {'':-<6} {'':-<{USERNAMEWIDTH}}"
+    print(f"{column_title} {'':10} {column_title}")
+    print(f"{column_title_underline} {'':10} {column_title_underline}")
+
+
+def print_new_page(page_number: int):
+    if page_number % 63 == 0:
+        print('' if page_number == 0 else '\n')
+        print_column_header()
+
+
+def print_rl_users(r_user: User, l_user: User):
+    l_name = create_user_fullname(l_user)
+    r_name = create_user_fullname(r_user)
+
+    left_user_to_print = f"{l_name:<{NAMEWIDTH}} {l_user.id:^6} {l_user.username:<{USERNAMEWIDTH}}"
+
+    right_user_to_print = f"{r_name:.<{NAMEWIDTH}} {r_user.id:^6} {r_user.username:<{USERNAMEWIDTH}}"
+
+    print(f'{left_user_to_print} {"":10} {right_user_to_print}')
+
+
+def create_users_pair(users: dict[User]) -> enumerate[tuple[dict[User]]]:
+    ordered_users = sorted(users)
+    left_users, right_users =  ordered_users[::2], ordered_users[1::2] # odd and even
+    users_pair = zip(left_users, right_users)
+
+    return enumerate(users_pair)
+
+def print_users(users: dict[User]):    
+    for i, (left_user, rigth_user) in create_users_pair(users): 
+        l_user, r_user = users[left_user], users[rigth_user]
+
+        print_new_page(i)
+        print_rl_users(r_user, l_user)
+
+
+def main():
+    import sys
     
-    fix_len_columns(column1_list, column2_list)
+    if len(sys.argv) == 1 or sys.argv[1] in {"-h", "--help"}:
+        print(f"usage: {sys.argv[0]} file1 [file2 [...fileN]]")
+        sys.exit()
 
-
-
-
-def print_users(users: dict) -> None:
-    name_width = 17
-    username_width = 9
-    
-
-    column1_list = [printable_header(name_width, username_width), printable_divider(name_width, username_width)]
-    column2_list = [printable_header(name_width, username_width), printable_divider(name_width, username_width)]
-
-    two_users_per_line(column1_list, column2_list, users, name_width, username_width)
-
-    for column1, column2 in zip(column1_list, column2_list):
-        print(f"{column1}    {column2}")
-
-
-def main() -> None:
-    validate_start()
-
-    usernames_set = set()
-    users_dict = {}
+    usernames: set[str] = set()
+    users: dict[User] = {}
 
     for filename in sys.argv[1:]:
         for line in open(filename, encoding="utf8"):
-            line = line.rstrip()
+            line = line.strip()
             if line:
-                user = process_line(line, usernames_set)
-                users_dict[(user.surname.lower(), user.forename.lower(), user.id)] = user
+                user = process_line(line, usernames)
+                users[(user.surname.lower(), user.forename.lower(), user.id)] = user
     
-    print_users(users_dict)
+    print_users(users)
 
 
-if __name__ == "__main__":
-    main() 
+main()
