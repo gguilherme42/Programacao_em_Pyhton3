@@ -4,9 +4,9 @@ import xml.sax.saxutils
 
 copyrigth_TEMPLATE_to_print =lambda year, name: f"Copyright (c) {year} {name}. All rights reserved."
 
-stylesheet_TEMPLATE_to_print =lamda href : f'<link rel="stylesheet" type="text/css" media ="all" href={href}" />\n'
+stylesheet_TEMPLATE_to_print =lambda href : f'<link rel="stylesheet" type="text/css" media ="all" href={href}" />\n'
 
-html_TEMPLATE_to_print =lambda title, stylesheet, copyright: f"""<!DOCTYPE html>
+html_TEMPLATE_to_print =lambda title, stylesheet, copyright, description="": f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,6 +17,8 @@ html_TEMPLATE_to_print =lambda title, stylesheet, copyright: f"""<!DOCTYPE html>
 	{stylesheet}
 </head>
 <body>
+	<h1>{title}</h1>
+	<p>{description}</p>
     
 </body>
 </html>
@@ -24,8 +26,8 @@ html_TEMPLATE_to_print =lambda title, stylesheet, copyright: f"""<!DOCTYPE html>
 
 class CancelledError(Exception): pass
 
-def get_string(message, name="string", default=None, minimum_length=0, maximum_length=80): 
-
+def get_string(message: str, name: str="string", default=None, minimum_length: int=0, maximum_length: int=80) -> str: 
+	message += f"[{default}] " if default else ""
 	while True:
 		try:
 			line = input(message)
@@ -40,36 +42,34 @@ def get_string(message, name="string", default=None, minimum_length=0, maximum_l
 			if not(minimum_length < len(line) <= maximum_length):
 				raise ValueError(f"{name} must have at least {minimum_length} and at most {maximum_length} characters")
 			return line
-		except ValuerError as err:
+		except ValueError as err:
 			print(f"ERROR {err}")
 
-def get_integer(message, name="integer", default=None, minimum=0, maximum=100, allow_zero=True): 
+def get_integer(message: str, name="integer", default=None, minimum=0, maximum=100, allow_zero=True) -> int: 
+	message += f"[{default}] " if default else ""
 
 	while True:
 		try:
 			line = int(input(message))
-			if not(line) and not(allow_zero):
+			if line == 0 and not(allow_zero):
 				if default is not None:
 					return default
-				if minimum == 0:
-					return 1
-				else:
-					raise ValueError(f"{name} may not be empty")
+				return minimum
 			
 			if not(minimum < line <= maximum):
-				raise ValueError(f"{name} must have at least {minimum} and at most {maximum} characters")
+				raise ValueError(f"{name} must have at least between {minimum} and {maximum} ")
 			return line
-		except ValuerError as err:
+		except ValueError as err:
 			print(f"ERROR {err}")
 
 
 def populate_information(information: dict): 
-	name = get_string("Enter your name (for copyright)", "name", information["name"])
+	name = get_string("Enter your name (for copyright): ", "name", information["name"])
 
 	if not name:
 		raise CancelledError()
 
-	year = get_integer("Enter copyright year", "year", information["year"], 2000, datetime.date.today().year + 1, True)
+	year = get_integer("Enter copyright year: ", "year", information["year"], 2000, datetime.date.today().year + 1, True)
 
 	if year == 0:
 		raise CancelledError()
@@ -89,7 +89,7 @@ def populate_information(information: dict):
 
 	description = get_string("Enter description (optional): ", "description")
 	keywords = [get_string("Enter a keyword (optional): ", "keywords") for _ in range(5)]
-	stylesheet = get_string("Enter the stylesheet filename (optional", "stylesheet")
+	stylesheet = get_string("Enter the stylesheet filename (optional): ", "stylesheet")
 
 
 	information.update(name=name, year=year, filename=filename, title=title, description=description, keywords=keywords, stylesheet=stylesheet)
@@ -97,17 +97,17 @@ def populate_information(information: dict):
 
 def make_html_skeleton(year, name, title, description, keywords, stylesheet, filename): 
 	
-	copyright = copyrigth_TEMPLATE_to_print(year, xml.saux.saxutils.escape(name))
+	copyright = copyrigth_TEMPLATE_to_print(year, xml.sax.saxutils.escape(name))
 
 	title = xml.sax.saxutils.escape(title)
 
 	description = xml.sax.saxutils.escape(description)
 
-	keywords = ",".join([xml.sax.saxutils.escape(k) for k in keywords if keywords else ""])
+	keywords = ",".join([xml.sax.saxutils.escape(k) for k in keywords]) if keywords else ""
 	
 	stylesheet = (stylesheet_TEMPLATE_to_print(stylesheet) if stylesheet else "")
 	
-	html = html_TEMPLATE_to_print(title, stylesheet, copyright)
+	html = html_TEMPLATE_to_print(title, stylesheet, copyright, description)
 
 	fh = None
 	try:
@@ -133,7 +133,7 @@ def main():
 		except CancelledError:
 			print("Canceled")
 
-		if (get_string("\nCreate another (y/n)?", default="y").lower() in {"y", "yes"}):
+		if (get_string("\nCreate another (y/n)?", default="y").lower() not in {"y", "yes"}):
 			break
 
 
